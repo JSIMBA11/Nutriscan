@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriScan</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🥗 NutriScan</h1>
+    <p>Smart food, healthy lives — anytime, anywhere.</p>
+  </header>
+  <main class="grid">
+    <section class="card">
+      <h2>📷 Scan / Search Food</h2>
+      <div class="row">
+        <input id="barcode" placeholder="Enter barcode (e.g. 5449000131805)"/>
+        <button onclick="scanBarcode()">Scan</button>
+      </div>
+      <div class="row">
+        <input id="query" placeholder="Or type a food name e.g. Banana"/>
+        <button onclick="searchFood()">Search</button>
+      </div>
+      <pre id="foodResult" class="result"></pre>
+    </section>
+    <section class="card">
+      <h2>🥑 My Pantry</h2>
+      <div class="row">
+        <input id="pantryName" placeholder="Add item (e.g. oats)"/>
+        <input id="pantryQty" type="number" min="0" step="0.5" value="1"/>
+        <button onclick="addPantry()">Add</button>
+      </div>
+      <ul id="pantryList" class="list"></ul>
+      <div class="row">
+        <select id="goal">
+          <option value="balanced" selected>Balanced</option>
+          <option value="high-protein">High Protein</option>
+          <option value="low-sugar">Low Sugar</option>
+        </select>
+        <button onclick="getRecipes()">AI Recipes</button>
+      </div>
+      <div id="recipes" class="cards"></div>
+    </section>
+    <section class="card">
+      <h2>🤝 Donate Surplus</h2>
+      <div class="row">
+        <input id="dName" placeholder="Your name (optional)"/>
+        <input id="dItem" placeholder="Item (e.g. Bread)"/>
+        <input id="dQty" placeholder="Qty"/>
+        <input id="dNote" placeholder="Pickup note (time/place)"/>
+        <button onclick="enableLocate()">📍 Use my location</button>
+        <button onclick="postDonation()">Post</button>
+      </div>
+      <div id="map"></div>
+      <button onclick="donate()" class="bg-green-600 text-white px-4 py-2 rounded-lg">
+        Donate $5
+      </button>
+    </section>
+    <section class="card">
+      <h2>📘 Learn: Mini Lessons</h2>
+      <div id="lessons" class="cards"></div>
+    </section>
+  </main>
+  <footer>
+    <small>© NutriScan • Built for SDG 2, 3 & 4</small>
+  </footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
